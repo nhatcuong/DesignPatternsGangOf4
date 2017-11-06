@@ -27,6 +27,9 @@ class Room(MapSite):
     def get_no(self):
         return self._room_no
 
+    def get_doors(self):
+        return [site for site in self._sides if isinstance(site, Door)]
+
 
 class Wall(MapSite):
     pass
