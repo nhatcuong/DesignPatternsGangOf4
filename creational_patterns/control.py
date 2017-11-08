@@ -7,6 +7,16 @@ class Direction(Enum):
     EAST = 2
     WEST = 3
 
+    def opposite(self):
+        ns = [Direction.NORTH, Direction.SOUTH]
+        ew = [Direction.EAST, Direction.WEST]
+        for opposites in (ns, ew):
+            if self in opposites:
+                opposites.remove(self)
+                return opposites.pop()
+        raise ValueError
+
+
 
 class MapSite:
     def enter(self):
@@ -59,7 +69,7 @@ class Maze:
     def get_room(self, no):
         try:
             return self.room_dict[no]
-        except ValueError:
+        except IndexError:
             raise ValueError('Maze {} does not have room no {}'.format(self, no))
 
 
