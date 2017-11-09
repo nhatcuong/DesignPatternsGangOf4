@@ -79,6 +79,26 @@ class StandardMazeBuilder(MazeBuilder):
         return self._current_maze
 
 
+class RoomAndDoorCountMazeBuilder(MazeBuilder):
+    def __init__(self):
+        self._count_dict = {
+            'room': 0,
+            'door': 0
+        }
+
+    def build_maze(self):
+        pass
+
+    def build_room(self, room_no, referent_room_no, direction_from_referent_room):
+        self._count_dict['room'] += 1
+
+    def build_door(self, room_no1, room_no2):
+        self._count_dict['door'] += 1
+
+    def get_maze_presentation(self):
+        return self._count_dict
+
+
 def build_simple_maze(builder):
     builder.build_maze()
     builder.build_room(1, None, None)
@@ -95,7 +115,12 @@ if __name__ == "__main__":
     south_room2 = room2.get_side(Direction.SOUTH)
     assert isinstance(north_room1, Door)
     assert south_room2 == north_room1
-    print(standard_maze_representation)
+    print('Standard maze object {}'.format(standard_maze_representation))
+
+    count_room_door_representation = build_simple_maze(RoomAndDoorCountMazeBuilder())
+    assert count_room_door_representation['room'] == 2
+    assert count_room_door_representation['door'] == 1
+    print('Count room door presentation {}'.format(count_room_door_representation))
 
 
 
