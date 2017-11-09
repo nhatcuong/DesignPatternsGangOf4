@@ -69,7 +69,7 @@ class Maze:
     def get_room(self, no):
         try:
             return self.room_dict[no]
-        except IndexError:
+        except KeyError:
             raise ValueError('Maze {} does not have room no {}'.format(self, no))
 
 
@@ -95,4 +95,5 @@ def create_maze():  #create a maze with 2 rooms and a door in between
     return maze
 
 
-create_maze()
+if __name__ == "__main__":
+    create_maze()

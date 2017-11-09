@@ -53,13 +53,14 @@ class EnchantedMazeFactory(MazeFactory):
         return EnchantedDoor(room1, room2)
 
 
-normal_maze = abstract_factory_make_maze(MazeFactory())
-room1 = normal_maze.get_room(1)
-assert type(room1) == Room
-assert all(type(door) == Door for door in room1.get_doors())
+if __name__ == "__main__":
+    normal_maze = abstract_factory_make_maze(MazeFactory())
+    room1 = normal_maze.get_room(1)
+    assert type(room1) == Room
+    assert all(type(door) == Door for door in room1.get_doors())
 
-enchanted_maze = abstract_factory_make_maze(EnchantedMazeFactory())
-room1 = enchanted_maze.get_room(1)
-assert type(room1) == EnchantedRoom
-assert all(type(door) == EnchantedDoor for door in room1.get_doors())
+    enchanted_maze = abstract_factory_make_maze(EnchantedMazeFactory())
+    room1 = enchanted_maze.get_room(1)
+    assert type(room1) == EnchantedRoom
+    assert all(type(door) == EnchantedDoor for door in room1.get_doors())
 
