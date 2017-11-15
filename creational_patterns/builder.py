@@ -5,7 +5,7 @@
 """
 
 
-from creational_patterns.control import Wall, Door, Room, Maze, Direction
+from creational_patterns.models import *
 from itertools import product
 
 

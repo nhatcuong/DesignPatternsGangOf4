@@ -1,4 +1,4 @@
-from creational_patterns.control import Wall, Door, Room, Maze, Direction
+from creational_patterns.models import *
 
 
 class MazeFactory:
@@ -32,17 +32,6 @@ def abstract_factory_make_maze(factory):
     room1.set_side(Direction.WEST, door)
     print('maze created with factory {}'.format(factory))
     return maze
-
-
-class EnchantedRoom(Room):
-    def cast_spell(self):
-        print('spell casted in room {}'.format(self._room_no))
-
-
-class EnchantedDoor(Door):
-    def cast_spell(self):
-        print('spell casted at door between room {} and room {}'
-              ''.format(self._room1.room_no, self._room2.room_no))
 
 
 class EnchantedMazeFactory(MazeFactory):
