@@ -32,14 +32,6 @@ class MazeGame:
         return maze
 
 
-maze = MazeGame().create_maze()
-room1 = maze.get_room(1)
-room2 = maze.get_room(2)
-assert type(room1.get_side(Direction.WEST)) == Door
-assert type(room2.get_side(Direction.EAST)) == Door
-print(maze)
-
-
 class EnchantedMazeGame(MazeGame):
     def make_maze(self):
         return EnchantedMaze()
@@ -50,12 +42,19 @@ class EnchantedMazeGame(MazeGame):
     def make_room(self, room_no):
         return EnchantedRoom(room_no)
 
+if __name__ == "__main__":
+    maze = MazeGame().create_maze()
+    room1 = maze.get_room(1)
+    room2 = maze.get_room(2)
+    assert type(room1.get_side(Direction.WEST)) == Door
+    assert type(room2.get_side(Direction.EAST)) == Door
+    print(maze)
 
-maze = EnchantedMazeGame().create_maze()
-room1 = maze.get_room(1)
-room2 = maze.get_room(2)
-assert type(room1) == EnchantedRoom
-assert type(room2.get_side(Direction.EAST)) == EnchantedDoor
-print(maze)
+    maze = EnchantedMazeGame().create_maze()
+    room1 = maze.get_room(1)
+    room2 = maze.get_room(2)
+    assert type(room1) == EnchantedRoom
+    assert type(room2.get_side(Direction.EAST)) == EnchantedDoor
+    print(maze)
 
 
