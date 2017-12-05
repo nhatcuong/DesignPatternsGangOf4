@@ -1,4 +1,4 @@
-from creational_patterns.models import *
+from creational_patterns._models import *
 
 
 class MazeGame:

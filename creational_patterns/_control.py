@@ -1,4 +1,4 @@
-from creational_patterns.models import *
+from creational_patterns._models import *
 
 def create_maze():  #create a maze with 2 rooms and a door in between
     maze = Maze()
